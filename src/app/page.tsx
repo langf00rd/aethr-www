@@ -12,20 +12,18 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <>
-      <section className="flex">
-        <LeftSideColumn />
-        <RecentPosts />
-      </section>
-    </>
+    <section className="flex">
+      <LeftSideColumn />
+      <RecentPosts />
+    </section>
   );
 }
 
-function LeftSideColumn() {
+export function LeftSideColumn() {
   return (
-    <div className="sticky top-3 max-h-[90vh] hidden md:block">
-      <h1 className="max-w-[200px] pb-5 font-extrabold text-xl text-gray-700">
-        the most esoteric community on the internet
+    <div className="sticky top-3 max-h-[90vh] hidden md:block w-[200px]">
+      <h1 className="max-w-[200px] pb-5 font-extrabold text-2xl text-gray-700">
+        most esoteric community on the internet
       </h1>
       <hr />
       <Topics />
@@ -40,7 +38,7 @@ function Topics() {
     <div className="flex-1 space-y-4 py-5">
       <h3 className="font-semibold">hot topics now</h3>
       <ul className="space-y-3">
-        {Array.from({ length: 9 }).map((_, index) => (
+        {Array.from({ length: 5 }).map((_, index) => (
           <li key={index}>
             <Link
               className="flex items-center gap-2 hover:text-primary group"

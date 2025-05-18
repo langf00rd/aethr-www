@@ -36,3 +36,7 @@ export function generateRandomSentence(): string {
 export function getTodayDate() {
   return new Date().toString().substring(0, 15);
 }
+
+export function getRandomIntBetween(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}

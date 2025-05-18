@@ -135,3 +135,7 @@ h5,
 h6 {
     @apply font-semibold;
 } */
+
+._container {
+    @apply max-w-[900px] mx-auto;
+}

@@ -1,21 +1,17 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { IComment } from "@/lib/types";
 import {
   generateRandomSentence,
   generateRandomWord,
   getInitials,
-  getTodayDate,
 } from "@/lib/utils";
 import { ArrowUp, MessageSquare } from "lucide-react";
-import Link from "next/link";
 import { Badge } from "./ui/badge";
 
-export default function Post() {
+export default function Comment(props: { commments: IComment[] }) {
   return (
-    <li className="px-5 border-b py-5 hover:bg-gray-50 transition-all hover:scale-[1.02] hover:border-1 hover:shadow-md">
-      <Link
-        href={"/t/" + Date.now()}
-        className="flex items-start gap-2 group w-full"
-      >
+    <li className="px-5 border-b last:border-none last:-mb-5 py-5 hover:bg-gray-50 transition-colors">
+      <div className="flex items-start gap-2 group w-full">
         <Avatar className="size-12">
           <AvatarImage src="" />
           <AvatarFallback>{getInitials(generateRandomWord())}</AvatarFallback>
@@ -31,7 +27,7 @@ export default function Post() {
               </Badge>
             </div>
             <div className="flex items-center gap-5 text-[14px] font-mono">
-              <p>{getTodayDate()}</p>
+              {/* <p>{getTodayDate()}</p> */}
               <p className="flex items-center justify-center gap-1">
                 <ArrowUp size={14} /> {100}
               </p>
@@ -42,7 +38,16 @@ export default function Post() {
           </div>
           <p className="text-[15px]">{generateRandomSentence()}</p>
         </div>
-      </Link>
+      </div>
+      {props.commments && (
+        <ul className="ml-6 border-l border-dashed">
+          {Array.from({ length: props.commments.length || 0 }).map(
+            (_, index) => (
+              <Comment commments={[]} key={index} />
+            ),
+          )}
+        </ul>
+      )}
     </li>
   );
 }
