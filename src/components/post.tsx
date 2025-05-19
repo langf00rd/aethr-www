@@ -5,8 +5,8 @@ import {
   getInitials,
   getTodayDate,
 } from "@/lib/utils";
-import { ArrowUp, MessageSquare } from "lucide-react";
 import Link from "next/link";
+import { PostActions } from "./content-actions";
 import { Badge } from "./ui/badge";
 
 export default function Post() {
@@ -20,7 +20,7 @@ export default function Post() {
           <AvatarImage src="" />
           <AvatarFallback>{getInitials(generateRandomWord())}</AvatarFallback>
         </Avatar>
-        <div className="space-y-1 w-full">
+        <div className="space-y-3 w-full">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-5">
               <p className="font-semibold text-black transition-colors group-hover:underline font-mono text-[14px]">
@@ -30,17 +30,10 @@ export default function Post() {
                 #{generateRandomWord()}
               </Badge>
             </div>
-            <div className="flex items-center gap-5 text-[14px] font-mono">
-              <p>{getTodayDate()}</p>
-              <p className="flex items-center justify-center gap-1">
-                <ArrowUp size={14} /> {100}
-              </p>
-              <p className="flex items-center justify-center gap-1">
-                <MessageSquare size={14} /> {100}
-              </p>
-            </div>
+            <p className="text-[14px] text-neutral-500">{getTodayDate()}</p>
           </div>
           <p className="text-[15px]">{generateRandomSentence()}</p>
+          <PostActions />
         </div>
       </Link>
     </li>
