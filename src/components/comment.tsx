@@ -1,18 +1,18 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { IComment } from "@/lib/types";
+import { IComment } from "@/lib/entities";
 import {
   generateRandomSentence,
   generateRandomWord,
   getInitials,
 } from "@/lib/utils";
-import { ArrowUp, MessageSquare } from "lucide-react";
+import { PostActions } from "./content-actions";
 import { Badge } from "./ui/badge";
 
 export default function Comment(props: { commments: IComment[] }) {
   return (
     <li className="px-5 border-b last:border-none last:-mb-5 py-5 hover:bg-gray-50 transition-colors">
       <div className="flex items-start gap-2 group w-full">
-        <Avatar className="size-12">
+        <Avatar className="size-10">
           <AvatarImage src="" />
           <AvatarFallback>{getInitials(generateRandomWord())}</AvatarFallback>
         </Avatar>
@@ -26,17 +26,9 @@ export default function Comment(props: { commments: IComment[] }) {
                 #{generateRandomWord()}
               </Badge>
             </div>
-            <div className="flex items-center gap-5 text-[14px] font-mono">
-              {/* <p>{getTodayDate()}</p> */}
-              <p className="flex items-center justify-center gap-1">
-                <ArrowUp size={14} /> {100}
-              </p>
-              <p className="flex items-center justify-center gap-1">
-                <MessageSquare size={14} /> {100}
-              </p>
-            </div>
           </div>
           <p className="text-[15px]">{generateRandomSentence()}</p>
+          <PostActions type="comment" />
         </div>
       </div>
       {props.commments && (

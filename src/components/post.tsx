@@ -33,7 +33,7 @@ export default function Post() {
             <p className="text-[14px] text-neutral-500">{getTodayDate()}</p>
           </div>
           <p className="text-[15px]">{generateRandomSentence()}</p>
-          <PostActions />
+          <PostActions type="post" />
         </div>
       </Link>
     </li>
